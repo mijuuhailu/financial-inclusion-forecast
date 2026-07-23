@@ -1,180 +1,65 @@
 # Forecasting Financial Inclusion in Ethiopia
 
-## Project Overview
+## Overview
 
-This project aims to build a forecasting system that analyzes and predicts Ethiopia's financial inclusion using time series analysis. The focus is on forecasting two key financial inclusion indicators defined by the World Bank Global Findex framework:
-
-* **Access** – Account Ownership Rate
-* **Usage** – Digital Payment Adoption Rate
-
-The project explores historical financial inclusion trends, identifies the impact of major policy and market events, enriches the dataset with additional explanatory variables, and prepares the data for forecasting future financial inclusion outcomes.
+This project develops a time series forecasting system to analyze and forecast Ethiopia's financial inclusion using the World Bank Global Findex framework. The focus is on predicting **Account Ownership (Access)** while incorporating key digital finance events and supporting indicators.
 
 ---
 
-# Objectives
+## Project Progress
 
-The project seeks to answer the following questions:
+### 1. Data Understanding
+- Explored the unified dataset structure.
+- Analyzed record types, indicators, pillars, and data sources.
+- Identified missing values and data limitations.
+- Examined the timeline of major financial inclusion events.
 
-* What factors drive financial inclusion in Ethiopia?
-* How have major events such as Telebirr, M-Pesa, and national policy reforms influenced financial inclusion?
-* How is financial inclusion expected to evolve in 2025, 2026, and 2027?
+### 2. Exploratory Data Analysis (EDA)
+- Visualized historical Account Ownership trends.
+- Explored indicator distributions and event chronology.
+- Identified that the target variable has only four historical observations (2014, 2017, 2021, and 2024).
 
----
+### 3. Data Enrichment
+Added external indicators from trusted public sources (World Bank, ITU, and National Bank of Ethiopia):
 
-# Dataset
+- Internet Penetration (`USG_INTERNET_PEN`)
+- Mobile Cellular Subscriptions (`USG_MOBILE_SUB`)
+- Mobile Money Agent Network (`USG_AGENT_NETWORK`)
+- Mobile Money Accounts (`USG_MM_ACCOUNTS`)
+- Bank Branches (`USG_BANK_BRANCHES`)
 
-The primary dataset (`ethiopia_fi_unified_data`) contains four record types:
+### 4. Metadata Update
+- Updated `reference_codes.csv` with the newly added indicator codes.
+- Saved the enriched dataset as `ethiopia_fi_enriched.csv`.
 
-* **Observation** – Historical measurements of financial inclusion and related indicators.
-* **Event** – Major policy changes, product launches, infrastructure developments, and market milestones.
-* **Target** – Official policy goals and future targets.
-* **Impact Links** – (Planned for later stages) Relationships between events and financial inclusion indicators.
+### 5. Data Preparation
+- Converted observation dates to yearly format.
+- Built a modeling dataset using annual observations.
+- Created intervention variables for:
+  - Telebirr launch
+  - M-Pesa launch
+  - Fayda rollout
+- Interpolated missing yearly Account Ownership values while preserving original observations.
 
-Supporting files include:
+### 6. Forecasting
+- Developed a baseline time series forecasting model.
+- Forecasted Ethiopia's Account Ownership Rate for:
+  - 2025
+  - 2026
+  - 2027
 
-* `reference_codes.csv`
-* `README.md`
-* Additional Data Enrichment Guide
-
----
-
-# Work Completed
-
-## 1. Data Understanding
-
-The dataset structure was explored to understand:
-
-* Dataset dimensions and schema
-* Data types
-* Missing values
-* Record types
-* Financial inclusion pillars
-* Indicator codes
-* Source types
-* Confidence levels
-* Temporal coverage
-* Event timeline
-
-The dataset contains:
-
-* Historical financial inclusion observations
-* Major digital finance events
-* Official policy targets
+### 7. Visualization
+Generated visualizations for:
+- Historical Account Ownership trend
+- Forecasted Account Ownership (2025–2027)
+- Normalized comparison of financial inclusion indicators
 
 ---
 
-## 2. Exploratory Data Analysis (EDA)
+## Technologies Used
 
-Initial exploration included:
-
-* Dataset overview (`info()`)
-* Missing value assessment
-* Frequency analysis of categorical variables
-* Distribution of record types
-* Indicator inventory
-* Event chronology
-* Temporal coverage analysis
-
-These steps helped identify areas requiring enrichment before forecasting.
-
----
-
-## 3. Dataset Enrichment
-
-The enrichment process was initiated to improve forecasting capability.
-
-### Completed
-
-One new explanatory indicator has been added:
-
-**Internet Penetration**
-
-Source:
-
-* World Bank Open Data
-* Indicator: *Individuals using the Internet (% of population)* (`IT.NET.USER.ZS`)
-
-Years Added:
-
-* 2020
-* 2021
-* 2022
-* 2023
-* 2024
-
-Reason for inclusion:
-
-Internet penetration is considered a leading indicator of digital payment adoption because increased internet access enables greater use of mobile banking, digital wallets, and other digital financial services.
-
----
-
-# Planned Enrichment
-
-Additional indicators planned for enrichment include:
-
-* Mobile Cellular Subscriptions
-* Smartphone Penetration
-* Active Mobile Money Accounts
-* Agent Network Size
-
-These indicators were selected because they are expected to improve forecasting performance by providing explanatory variables related to Ethiopia's digital financial ecosystem.
-
----
-
-# Current Project Status
-
-Completed:
-
-* Dataset loading
-* Data understanding
-* Initial exploratory analysis
-* Dataset quality assessment
-* Internet Penetration enrichment
-
-In Progress:
-
-* Additional data enrichment
-* Documentation of enrichment sources
-
-Planned:
-
-* Event-impact modeling
-* Time series forecasting
-* Forecast evaluation
-* Visualization dashboard
-* Final report
-
----
-
-# Tools and Libraries
-
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn (planned)
-* Statsmodels (planned)
-* Prophet (planned)
-* Jupyter Notebook
-
----
-
-# Data Sources
-
-* World Bank Open Data
-* National Bank of Ethiopia
-* GSMA Mobile Money Reports
-* International Telecommunication Union (ITU)
-* Ethiopia financial sector reports
-
----
-
-# Next Steps
-
-The next phase of the project will focus on:
-
-1. Completing dataset enrichment.
-2. Building relationships between events and financial inclusion indicators.
-3. Developing forecasting models for Access and Usage indicators.
-4. Evaluating model performance.
-5. Forecasting Ethiopia's financial inclusion for 2025–2027.
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Jupyter Notebook
